@@ -8,14 +8,16 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
+import UserTopGrid from "./UserTopGrid";
 
 interface User {
   id: number;
 }
 
 const Users = () => {
-  // States for the users
+  // States for the modal and the users
   const [users, setUsers] = useState<User[]>([]);
+  const [modalState, setModalState] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Fetching the users from the API
@@ -33,6 +35,14 @@ const Users = () => {
     }
   };
 
+  // Modal open and close
+  const handleModalClose = () => {
+    setModalState(false);
+  };
+  const handleModalOpen = () => {
+    setModalState(true);
+  };
+
   // Side effect to fetch the users
   useEffect(() => {
     fetchUsers();
@@ -40,6 +50,7 @@ const Users = () => {
 
   return (
     <>
+      <UserTopGrid showModal={handleModalOpen} />
       {isLoading ? (
         <div
           style={{

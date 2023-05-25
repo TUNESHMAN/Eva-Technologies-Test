@@ -19,6 +19,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Person from "@mui/icons-material/Person";
+import Users from "./Users";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const drawerWidth = 240;
 
@@ -140,6 +143,8 @@ export default function Content() {
       <Main open={open}>
         <DrawerHeader />
         {/* Page Content Here */}
+        <Users />
+        <ToastContainer />
       </Main>
     </Box>
   );

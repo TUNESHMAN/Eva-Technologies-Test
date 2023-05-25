@@ -9,6 +9,7 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import UserTopGrid from "./UserTopGrid";
+import NewUserForm from "./NewUserForm";
 
 interface User {
   id: number;
@@ -50,6 +51,7 @@ const Users = () => {
 
   return (
     <>
+      <NewUserForm modalState={modalState} close={handleModalClose} />{" "}
       <UserTopGrid showModal={handleModalOpen} />
       {isLoading ? (
         <div

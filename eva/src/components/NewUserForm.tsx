@@ -50,7 +50,7 @@ const NewUserForm = (props: NewUserFormProps) => {
       email: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (values, arg) => {
       try {
         let response = await axios.post(
           "https://mockend.com/api/pgilgunn/coding-test/users",
@@ -59,6 +59,7 @@ const NewUserForm = (props: NewUserFormProps) => {
         if (response.status === 201) {
           toast.success(`User ${response.data.id} created successfully`);
           props.close();
+          arg.resetForm();
         }
       } catch (error: any) {
         toast.error(`${error.message}`);
